@@ -1,4 +1,4 @@
-package Store;
+package store;
 
 public class Store {
     private int counter = 0;

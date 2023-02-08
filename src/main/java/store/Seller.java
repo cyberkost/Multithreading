@@ -1,17 +1,16 @@
-package Store;
+package store;
 
-public class Producer implements Runnable{
+public class Seller implements Runnable {
     Store store;
 
-    Producer(Store store) {
+    Seller(Store store) {
         this.store = store;
     }
 
     @Override
     public void run() {
         for (int i = 0; i < 5; i++) {
-            store.put();
+            store.get();
         }
     }
-
 }

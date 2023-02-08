@@ -1,4 +1,4 @@
-package Store;
+package store;
 
 public class Consumer implements Runnable {
     Store store;

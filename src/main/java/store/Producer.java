@@ -1,7 +1,7 @@
 package store;
 
 public class Producer implements Runnable{
-    Store store;
+    private final Store store;
 
     Producer(Store store) {
         this.store = store;

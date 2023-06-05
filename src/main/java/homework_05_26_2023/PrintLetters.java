@@ -1,7 +1,7 @@
 package homework_05_26_2023;
 
 public class PrintLetters implements Runnable {
-    private static final Object lock = new Object();
+    private static final Object LOCK = new Object();
     private static volatile char currentLetter = 'A';
     private final char letter;
 
@@ -12,10 +12,10 @@ public class PrintLetters implements Runnable {
     @Override
     public void run() {
         for (int i = 0; i < 5; i++) {
-            synchronized (lock) {
+            synchronized (LOCK) {
                 while (currentLetter != letter) {
                     try {
-                        lock.wait();
+                        LOCK.wait();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -28,7 +28,7 @@ public class PrintLetters implements Runnable {
                 } else {
                     currentLetter = 'A';
                 }
-                lock.notifyAll();
+                LOCK.notifyAll();
             }
             try {
                 Thread.sleep(500);
@@ -39,12 +39,9 @@ public class PrintLetters implements Runnable {
     }
 
     public static void letterThreads() {
-        Thread threadA = new Thread(new PrintLetters('A'));
-        Thread threadB = new Thread(new PrintLetters('B'));
-        Thread threadC = new Thread(new PrintLetters('C'));
-        threadA.start();
-        threadB.start();
-        threadC.start();
+        new Thread(new PrintLetters('A')).start();
+        new Thread(new PrintLetters('B')).start();
+        new Thread(new PrintLetters('C')).start();
     }
 
     public static void main(String[] args) {

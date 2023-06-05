@@ -36,11 +36,7 @@ public class MFU {
 
     public static void main(String[] args) {
         MFU mfu = new MFU();
-
-        Thread printThread = new Thread(() -> mfu.printDocument("Документ 1", 5));
-        Thread scanThread = new Thread(() -> mfu.scanDocument("Документ 2", 3));
-
-        printThread.start();
-        scanThread.start();
+        new Thread(() -> mfu.printDocument("Документ 1", 5)).start();
+        new Thread(() -> mfu.scanDocument("Документ 2", 3)).start();
     }
 }

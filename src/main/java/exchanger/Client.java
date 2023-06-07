@@ -58,7 +58,7 @@ class Restaurant {
         clients.add(new Client(0.0, exchanger));
         clients.add(new Client(0.0, exchanger));
         clients.add(new Client(0.0, exchanger));
-        clients.add(new Client(10.0, exchanger));
+        clients.add(new Client(0.0, exchanger));
 
         // Display initial balance of each client
         for (Client client : clients) {
